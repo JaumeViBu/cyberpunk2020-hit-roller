@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberpunk hit roller</title>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/index.js"></script>
+</head>
+
+<body>
+  <main>
+    <form id="leftContainer">
+      <div class="row">
+        <button id="btnRoll" type="submit">Roll</button>
+      </div>
+      <div class="row">
+        <label for="inHitMod">Hit modifier</label>
+        <input id="inHitMod" name="inHitMod" type="number" value="0" step="1">
+      </div>
+      <div id="distanceCheck">
+        <div id='distanceCheck-contact' class="distanceCheckValue distanceCheckMiss">Contact (&lt1m)</div>
+        <div id='distanceCheck-close' class="distanceCheckValue distanceCheckMiss">Close (1/4)</div>
+        <div id='distanceCheck-mid' class="distanceCheckValue distanceCheckMiss">Mid (1/2)</div>
+        <div id='distanceCheck-far' class="distanceCheckValue distanceCheckMiss">Far (weapon distance)</div>
+        <div id='distanceCheck-extrafar' class="distanceCheckValue distanceCheckMiss">Extra Far (x2 weapon distance)
+        </div>
+      </div>
+    </form>
+
+    <div id="rightContainer" class="no-hit">
+
+    </div>
+  </main>
+</body>
+
+</html>

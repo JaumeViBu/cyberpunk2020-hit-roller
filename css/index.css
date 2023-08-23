@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+main {
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.row {
+  padding: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#leftContainer {
+  padding: 1rem;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#btnRoll {
+  width: 5rem;
+}
+
+#rightContainer {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+#distanceCheck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.2rem;
+}
+
+.distanceCheckValue {
+  padding: 0.2rem;
+  width: 250px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 0.5rem 0;
+}
+
+.distanceCheckHit {
+  background-color: rgb(170, 252, 89);
+}
+.distanceCheckMiss {
+  background-color: rgb(247, 60, 98);
+}
+
+.no-hit {
+  background-image: url("../media/body-no-hit.jpg");
+}
+
+.head-hit {
+  background-image: url("../media/body-head-hit.jpg");
+}
+
+.torso-hit {
+  background-image: url("../media/body-torso-hit.jpg");
+}
+
+.left-arm-hit {
+  background-image: url("../media/body-left-arm-hit.jpg");
+}
+
+.right-arm-hit {
+  background-image: url("../media/body-right-arm-hit.jpg");
+}
+
+.left-leg-hit {
+  background-image: url("../media/body-left-leg-hit.jpg");
+}
+
+.right-leg-hit {
+  background-image: url("../media/body-right-leg-hit.jpg");
+}
