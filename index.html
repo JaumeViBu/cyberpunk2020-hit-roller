@@ -6,28 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cyberpunk hit roller</title>
   <link rel="stylesheet" href="css/index.css">
-  <script src="js/index.js"></script>
+  <script src="js/index.js" defer></script>
 </head>
 
 <body>
   <main>
-    <form id="leftContainer">
-      <div class="row">
-        <button id="btnRoll" type="submit">Roll</button>
-      </div>
-      <div class="row">
-        <label for="inHitMod">Hit modifier</label>
-        <input id="inHitMod" name="inHitMod" type="number" value="0" step="1">
-      </div>
-      <div id="distanceCheck">
-        <div id='distanceCheck-contact' class="distanceCheckValue distanceCheckMiss">Contact (&lt1m)</div>
-        <div id='distanceCheck-close' class="distanceCheckValue distanceCheckMiss">Close (1/4)</div>
-        <div id='distanceCheck-mid' class="distanceCheckValue distanceCheckMiss">Mid (1/2)</div>
-        <div id='distanceCheck-far' class="distanceCheckValue distanceCheckMiss">Far (weapon distance)</div>
-        <div id='distanceCheck-extrafar' class="distanceCheckValue distanceCheckMiss">Extra Far (x2 weapon distance)
+    <div id="leftContainer">
+
+      <form> <!-- id="leftContainer"> -->
+        <div class="row">
+          <button id="btnRoll" type="submit">Roll</button>
         </div>
-      </div>
-    </form>
+        <div class="row">
+          <label for="inHitMod">Hit modifier</label>
+          <input id="inHitMod" name="inHitMod" type="number" value="0" step="1" class="pill">
+        </div>
+        <div class="row">
+          <label for="inDmg">Weapon damage</label>
+          <input id="inDmg" name="inDmg" type="text" class="pill">
+        </div>
+        <div class="row">
+          <label for="selWeaponType">Weapon type</label>
+          <select name="selWeaponType" id="selWeaponType" onchange="weaponChange()" class="pill">
+            <option value="pistol" selected>Pistol</option>
+            <option value="submachine">Submachine Gun</option>
+            <option value="shotgun">Shotgun</option>
+            <option value="rifle">Rifle</option>
+            <option value="heavy">Heavy Weapon</option>
+            <option value="exotic">Exotic Weapon</option>
+          </select>
+        </div>
+        <div id="distanceCheck">
+          <div id='distanceCheck-contact' class="distanceCheckValue distanceCheckMiss pill">Contact (&lt=1m)</div>
+          <div id='distanceCheck-close' class="distanceCheckValue distanceCheckMiss pill">Close (1/4 weapon distance)
+          </div>
+          <div id='distanceCheck-mid' class="distanceCheckValue distanceCheckMiss pill">Mid (1/2 weapon distance)</div>
+          <div id='distanceCheck-far' class="distanceCheckValue distanceCheckMiss pill">Far (weapon distance)</div>
+          <div id='distanceCheck-extrafar' class="distanceCheckValue distanceCheckMiss pill">Extra Far (x2 weapon
+            distance)
+          </div>
+        </div>
+      </form>
+      <textarea name="txtResults" id="txtResults" cols="30" rows="5" readonly></textarea>
+      <button id='btnClear' class="pill" onclick="clearResults()" type="button">Clear</button>
+    </div>
 
     <div id="rightContainer" class="no-hit">
 

@@ -28,7 +28,11 @@ main {
 }
 
 #btnRoll {
-  width: 5rem;
+  padding: 0.2rem;
+  width: 250px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 #rightContainer {
@@ -45,11 +49,6 @@ main {
 }
 
 .distanceCheckValue {
-  padding: 0.2rem;
-  width: 250px;
-  text-align: center;
-  border: 1px solid black;
-  border-radius: 15px;
   margin: 0.5rem 0;
 }
 
@@ -86,4 +85,34 @@ main {
 
 .right-leg-hit {
   background-image: url("../media/body-right-leg-hit.jpg");
+}
+
+#selWeaponType {
+}
+
+#txtResults {
+  resize: none;
+}
+
+#inHitMod {
+}
+
+#inDmg {
+}
+
+.pill {
+  padding: 0.2rem;
+  width: 250px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+#btnClear {
+  margin-top: 0.5rem;
+}
+
+button,
+select {
+  cursor: pointer;
 }
