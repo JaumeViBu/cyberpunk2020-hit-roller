@@ -6,3 +6,5 @@
 - [x] It shows quick and clear the location of the hit using an image
 - [ ] It shows quick and clear the amount of damage produced in case of a hit
 - [ ] It gives the option of calculating the hit with or without exploding crit dices
+
+### [Demo](https://jaumevibu.github.io/cyberpunk2020-hit-roller/)
