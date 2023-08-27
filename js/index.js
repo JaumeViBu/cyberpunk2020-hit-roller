@@ -1,4 +1,5 @@
 const DEBUGMODE = false;
+const EXPLODING_DICE_MODE = true;
 
 function hitRoll() {
 
@@ -6,10 +7,12 @@ function hitRoll() {
   let dice = d10Roll();
   modifier = isNaN(modifier) ? 0 : modifier;
   const resultsTextArea = document.querySelector('#txtResults');
-  let total = dice + modifier;
+  let total = dice.value + modifier;
 
   resultsTextArea.value = `..............................\n` + resultsTextArea.value;
-  resultsTextArea.value = `total: ${dice} + ${modifier} = ${total}\n` + resultsTextArea.value;
+  resultsTextArea.value = `crit: ${dice.isCrit}\n` + resultsTextArea.value;
+  resultsTextArea.value = `crit explosions: ${dice.timesCrit}\n` + resultsTextArea.value;
+  resultsTextArea.value = `total: ${dice.value} + ${modifier} = ${total}\n` + resultsTextArea.value;
 
   resetChecks();
   updateDistanceChecks(total);
@@ -20,7 +23,9 @@ function hitRoll() {
   if (DEBUGMODE) {
 
     console.log('hit roll');
-    console.log(`dice: ${dice}`);
+    console.log(`dice: ${dice.value}`);
+    console.log(`crit: ${dice.isCrit}`);
+    console.log(`crit explosions: ${dice.timesCrit}`)
     console.log(`mod: ${modifier}`);
     console.log(`total: ${total}`)
   }
@@ -56,7 +61,7 @@ function updateDistanceChecks(value) {
 
 function hitLocation() {
 
-  const location = d10Roll();
+  const location = randomIntFromInterval(1, 10);
   const container = document.querySelector('#rightContainer');
   const resultsTextArea = document.querySelector('#txtResults');
 
@@ -101,11 +106,39 @@ function resetHitLocation() {
 
 
 /**
- * 1-10
+ * returns the result of rolling a d10
+ * if the dice rolls a 10, it's a crit and it's rolled again and the new result added to the previous.
+ * If EXPLODING_DICE_MODE is true then it keeps rerolling and adding until the roll is not equal to 10
+ * otherwise it just rerolls once.
+ * Returns an object with the accumulated value, if its a crit, and how many crits it's been
+ * ex: 
+ * {
+ *   value: 24, //10+10+4
+ *   isCrit: true,
+ *   timesCrit: 2,
+ * }
  */
 function d10Roll() {
 
-  return randomIntFromInterval(1, 10);
+  const result = {
+    value: 0,
+    isCrit: false,
+    timesCrit: 0,
+  }
+
+  roll = randomIntFromInterval(1, 10);
+  result.value += roll;
+
+  while (roll === 10) {
+
+    result.isCrit = true;
+    result.timesCrit += 1;
+    roll = randomIntFromInterval(1, 10);
+    result.value += roll;
+    if (!EXPLODING_DICE_MODE) break;
+  }
+
+  return result;
 }
 
 /**
@@ -186,6 +219,27 @@ function clearResults() {
   document.querySelector('#txtResults').value = '';
 }
 
+function testExplosionDice() {
+  test = {
+    rolls: 1e6,
+    crits: 0,
+    multipleExplosion: 0,
+    maxExplosion: 0,
+  }
+
+  for (let i = 0; i < test.rolls; i += 1) {
+
+    const roll = d10Roll();
+    if (roll.isCrit) test.crits += 1;
+    if (roll.timesCrit > 1) test.multipleExplosion += 1;
+    if (roll.timesCrit > test.maxExplosion) test.maxExplosion = roll.timesCrit;
+  }
+
+  console.log(`%Crit: ${100 * test.crits / test.rolls}`);
+  console.log(`%Crit Explosions: ${100 * test.multipleExplosion / test.crits}`);
+  console.log(`Max explosions: ${test.maxExplosion}`);
+}
+
 
 addEventListener("submit", (e) => {
 
@@ -194,3 +248,5 @@ addEventListener("submit", (e) => {
 })
 
 weaponChange();
+
+if (DEBUGMODE) testExplosionDice();
