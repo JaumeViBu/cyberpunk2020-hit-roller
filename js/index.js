@@ -1,5 +1,5 @@
 const DEBUGMODE = false;
-const EXPLODING_DICE_MODE = true;
+let EXPLODING_DICE_MODE = true;
 
 function hitRoll() {
 
@@ -154,7 +154,6 @@ function randomIntFromInterval(min, max) {
 
 function weaponChange() {
 
-
   const weaponName = document.querySelector('#selWeaponType').value;
   const checkContact = document.querySelector('#distanceCheck-contact');
   const checkClose = document.querySelector('#distanceCheck-close');
@@ -220,6 +219,7 @@ function clearResults() {
 }
 
 function testExplosionDice() {
+
   test = {
     rolls: 1e6,
     crits: 0,
@@ -240,6 +240,23 @@ function testExplosionDice() {
   console.log(`Max explosions: ${test.maxExplosion}`);
 }
 
+function toogleExplodingMode() {
+
+  const toogleBtn = document.querySelector('#toogleExplode');
+  EXPLODING_DICE_MODE = !EXPLODING_DICE_MODE;
+  if (EXPLODING_DICE_MODE) {
+    toogleBtn.classList.replace('toogleBtn-Off', 'toogleBtn-On');
+    toogleBtn.querySelector('p').innerText = '- ENABLED -';
+  }
+  else {
+    toogleBtn.classList.replace('toogleBtn-On', 'toogleBtn-Off');
+    toogleBtn.querySelector('p').innerText = '- DISABLED -';
+  }
+}
+
+/********************************************************/
+/*********************** MAIN ***************************/
+/********************************************************/
 
 addEventListener("submit", (e) => {
 

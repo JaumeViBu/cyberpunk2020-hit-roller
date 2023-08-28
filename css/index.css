@@ -28,11 +28,6 @@ main {
 }
 
 #btnRoll {
-  padding: 0.2rem;
-  width: 250px;
-  text-align: center;
-  border: 1px solid black;
-  border-radius: 15px;
 }
 
 #rightContainer {
@@ -115,4 +110,25 @@ main {
 button,
 select {
   cursor: pointer;
+}
+
+.btn {
+  padding: 0.2rem;
+  width: 250px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-bottom: 0.5rem;
+}
+
+.btn p {
+  font-style: italic;
+}
+
+.toogleBtn-On {
+  background-color: rgb(85, 213, 85);
+}
+
+.toogleBtn-Off {
+  background-color: rgb(199, 199, 199);
 }
