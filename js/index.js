@@ -163,7 +163,8 @@ function weaponChange() {
 
   const weaponDistances = {
     pistol: 50,
-    submachine: 150,
+    lightSMG: 150,
+    mediumSMG: 200,
     shotgun: 50,
     rifle: 400,
     heavy: null,
