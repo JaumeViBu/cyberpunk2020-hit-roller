@@ -8,6 +8,6 @@
 - [x] It gives the option of calculating the hit with or without exploding crit dices
   - [x] It shows how many times the dice explodes
 - [ ] It applies i18n
-- [ ] It applies responsive design ( pc/phone )
+- [x] It applies responsive design ( pc/phone )
 
 ### [Demo](https://jaumevibu.github.io/cyberpunk2020-hit-roller/)
