@@ -261,7 +261,7 @@ function rollWeaponDamage() {
   const weaponDamage = document.querySelector("#inDmg").value;
   const resultsTextArea = document.querySelector("#txtResults");
 
-  const parsed = weaponDamage.match("^([0-9]+)[d]([0-9]+)([+-][0-9]+)?$");
+  const parsed = weaponDamage.match("^([0-9]+)[d|D]([0-9]+)([+-][0-9]+)?$");
 
   if (parsed) {
     let dmg = 0;
@@ -275,7 +275,10 @@ function rollWeaponDamage() {
     resultsTextArea.value = `damage: ${dmg}\n` + resultsTextArea.value;
   } else {
     resultsTextArea.value =
-      `damage: -invalid formula-\n` + resultsTextArea.value;
+      `damage: -invalid formula-\n` +
+      `Formula should be: [ integer : number of dices ][ d | D ][ integer : number of sides of the dice ][ + | - ][ integer: modifier]\n` +
+      `Ex: 4d6+5 or 2d8 or 1d12-3\n` +
+      resultsTextArea.value;
   }
 
   if (DEBUGMODE) {
